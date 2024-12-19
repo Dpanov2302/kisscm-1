@@ -10,7 +10,7 @@ def print_tree(startpath, exclude_files=None, prefix=""):
     entries.sort(key=lambda e: (not e.is_dir(), e.name))
 
     for index, entry in enumerate(entries):
-        if entry.name in exclude_files or entry.name.startswith("."):
+        if entry.name in exclude_files or entry.name.startswith(".") or entry.name.startswith("__p"):
             continue
 
         connector = "└── " if index == len(entries) - 1 else "├── "
