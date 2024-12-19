@@ -7,8 +7,10 @@ from shell.emulator import ShellEmulator
 class TestVirtualFileSystem(unittest.TestCase):
     def setUp(self):
         # Копирование архива из папки data в рабочую директорию
+        data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data')
         self.zip_path = 'test_vfs.zip'
-        shutil.copy('../data/vfs.zip', self.zip_path)
+        zip_file_path = os.path.join(data_dir, 'vfs.zip')
+        shutil.copy(zip_file_path, self.zip_path)
         self.emulator = ShellEmulator(self.zip_path)
         self.vfs = self.emulator.vfs
 
